@@ -1,0 +1,15 @@
+﻿@model NetPontoSec.Models.Post
+
+<h1>@Model.Title</h1>
+
+<article class="well">
+   
+    <div>
+        @Html.Raw(Model.Body)
+    </div>
+    <p class="text-right">
+        <a asp-controller="home" asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
+    </p>
+
+    <div class="text-right">@Model.Visits. Written by @Model.AuthorName</div>
+</article>

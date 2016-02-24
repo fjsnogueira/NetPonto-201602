@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>NetPonto Forum</h1>
+
+<div class="row">
+    <a asp-controller="home" asp-action="create">New Post</a>
+    <div class="col-md-12">
+        <ul class="list-unstyled">
+            @*Due to a bug in RC1 won't use DisplayForModel()*@
+            @*@Html.DisplayForModel()*@
+            @foreach (var post in Model)
+            {
+                <li>
+                    <div class="well">
+                        <a asp-controller="home" asp-action="details" asp-route-id="@post.Id" class="lead">@post.Title</a>
+                        <div>
+                            @post.Abstract
+                        </div>
+                        <p class="text-right">
+                            @post.Visits Visits. Writen by: @post.AuthorName
+                            <br/>
+                            <a asp-controller="home" asp-action="details" asp-route-id="@post.Id">Ler Mais</a>
+                        </p>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+
+</div>
